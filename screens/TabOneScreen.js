@@ -1,24 +1,32 @@
 import styled from 'styled-components';
+import { LinearGradient } from "expo-linear-gradient";
 
 import ChartTests from "../components/ChartsTests";
 
 export default function TabOneScreen() {
   return (
+    <SafeArea>
+      <Title>Hi, Ben</Title>
     <Container>
-      <Title>Ben</Title>
-      <Title>Tab One</Title>
       <Top>
       <ChartTests title={'roas'} value={0.6} sign={''}/>
-        <Seperator />
       <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
-        <Seperator />
+        <LinearGradient
+          colors={['red', 'yellow', 'green' ]}
+        />
         <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
-        <Seperator />
+        <LinearGradient
+          colors={['red', 'yellow', 'green' ]}
+        />
         <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
       </Top>
     </Container>
+    </SafeArea>
   );
 }
+
+const SafeArea = styled.SafeAreaView`
+`
 
 const Container = styled.ScrollView`
   //align-items: center;
@@ -36,14 +44,11 @@ const Container = styled.ScrollView`
 const Title = styled.Text`
   font-size: 20px;
   font-weight: bold;
-`;
-
-const Seperator = styled.View`
-  height: 4%;
-  width: 100%;
+  line-height: 80px;
+  background-color: #F5F5F5;
 `;
 
 const Top = styled.View`
-  height: 100%;
+  height: 75%;
   width: 100%;
 `;

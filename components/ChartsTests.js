@@ -1,6 +1,7 @@
 import * as WebBrowser from "expo-web-browser";
 import {Dimensions, StyleSheet, TouchableOpacity} from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import { LinearGradient } from "expo-linear-gradient";
 
 import Colors from "../constants/Colors";
 import { MonoText } from "./StyledText";
@@ -9,9 +10,13 @@ import styled from "styled-components";
 
 export default function ChartTests({ title, value, sign }) {
   return (
-    <ShadowedView>
+      <LinearGradient
+        colors={['#F5F5F5', 'gray', '#F5F5F5' ]}
+      >
+    <Container>
       <Title>{title}</Title>
       <Value>{sign}{value}</Value>
+    <ShadowedView>
       <LineChart
         data={{
           labels: ["January", "February", "March", "April", "May", "June"],
@@ -28,7 +33,7 @@ export default function ChartTests({ title, value, sign }) {
             }
           ]
         }}
-        width={Dimensions.get("window").width + 100} // from react-native
+        width={Dimensions.get("window").width + Dimensions.get("window").width * 0.2} // from react-native
         height={180}
         fromZero={true}
         withVerticalLines={false}
@@ -38,8 +43,9 @@ export default function ChartTests({ title, value, sign }) {
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
           showLabels: false,
-          labelColor: ()=> 'transparent',
+          labelColor: ()=> 'black',
           backgroundGradientFrom: "white",
+          propsForLabels: {display: 'none'},
           backgroundGradientTo: "white",
           backgroundGradientFromOpacity: 1,
           color: (opacity = 1) => `#00A8A8`,
@@ -65,16 +71,26 @@ export default function ChartTests({ title, value, sign }) {
         }}
       />
     </ShadowedView>
+    </Container>
+        </LinearGradient>
   );
 }
 
-const ShadowedView = styled.View`
+const Container = styled.View`
   padding: 4%;
+  background-color: white;
+  border-radius: 40px;
+`
+
+const ShadowedView = styled.View`
+  padding: 2%;
   background-color: white;
   width: 100%;
   height: 20%;
   border-radius: 40px;
-  shadow-color: black;
+  border-bottom-width: 40px;
+  border-bottom-color: #F5F5F5;
+  shadow-opacity: 0.1;
 `;
 
 const Title = styled.Text`
