@@ -11,18 +11,27 @@ export default function TabOneScreen() {
       <ChartTests title={'roas'} value={0.6} sign={''}/>
         <Seperator />
       <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
+        <Seperator />
+        <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
+        <Seperator />
+        <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
       </Top>
     </Container>
   );
 }
 
-const Container = styled.View`
-  flex: 1;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+const Container = styled.ScrollView`
+  //align-items: center;
+  //justify-content: center;
   background-color: #F5F5F5;
 `;
+
+// const Container = styled.View`
+//   flex: 1;
+//   //align-items: center;
+//   //justify-content: center;
+//   background-color: #F5F5F5;
+// `;
 
 const Title = styled.Text`
   font-size: 20px;
@@ -30,8 +39,7 @@ const Title = styled.Text`
 `;
 
 const Seperator = styled.View`
-  //margin-vertical: 30%;
-  height: 10%;
+  height: 4%;
   width: 100%;
 `;
 

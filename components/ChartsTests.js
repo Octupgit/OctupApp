@@ -59,7 +59,7 @@ export default function ChartTests({ title, value, sign }) {
         }}
         bezier
         style={{
-          marginVertical: 8,
+          marginVertical: 0,
           marginHorizontal: -60,
           borderRadius: 100
         }}
@@ -72,8 +72,7 @@ const ShadowedView = styled.View`
   padding: 4%;
   background-color: white;
   width: 100%;
-  width: 100%;
-  height: 30%;
+  height: 20%;
   border-radius: 40px;
   shadow-color: black;
 `;
@@ -82,6 +81,5 @@ const Title = styled.Text`
   font-size: 26px;
 `
 const Value = styled.Text`
-  margin-vertical: 2%;
   font-size: 40px;
 `
