@@ -7,8 +7,11 @@ export default function TabOneScreen() {
     <Container>
       <Title>Ben</Title>
       <Title>Tab One</Title>
-      <Seperator/>
-      <ChartTests/>
+      <Top>
+      <ChartTests title={'roas'} value={0.6} sign={''}/>
+        <Seperator />
+      <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
+      </Top>
     </Container>
   );
 }
@@ -18,7 +21,7 @@ const Container = styled.View`
   height: 100%;
   align-items: center;
   justify-content: center;
-  background-color: aquamarine;
+  background-color: #F5F5F5;
 `;
 
 const Title = styled.Text`
@@ -27,9 +30,12 @@ const Title = styled.Text`
 `;
 
 const Seperator = styled.View`
-  margin-vertical: 30%;
-  background-color: navy;
-  height: 1%;
+  //margin-vertical: 30%;
+  height: 10%;
   width: 100%;
 `;
 
+const Top = styled.View`
+  height: 100%;
+  width: 100%;
+`;

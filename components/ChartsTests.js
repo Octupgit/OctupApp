@@ -5,11 +5,13 @@ import { LineChart } from "react-native-chart-kit";
 import Colors from "../constants/Colors";
 import { MonoText } from "./StyledText";
 import { Text, View } from "./Themed";
+import styled from "styled-components";
 
-export default function ChartTests({ path }) {
+export default function ChartTests({ title, value, sign }) {
   return (
-    <View>
-      <Text>Bezier Line Chart</Text>
+    <ShadowedView>
+      <Title>{title}</Title>
+      <Value>{sign}{value}</Value>
       <LineChart
         data={{
           labels: ["January", "February", "March", "April", "May", "June"],
@@ -26,63 +28,60 @@ export default function ChartTests({ path }) {
             }
           ]
         }}
-        width={Dimensions.get("window").width} // from react-native
-        height={220}
-        yAxisLabel="$"
-        yAxisSuffix="k"
+        width={Dimensions.get("window").width + 100} // from react-native
+        height={180}
+        fromZero={true}
+        withVerticalLines={false}
+        withHorizontalLines={false}
+        yAxisLabel=""
+        yAxisSuffix=""
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
-          backgroundColor: "#e26a00",
-          backgroundGradientFrom: "#fb8c00",
-          backgroundGradientTo: "#ffa726",
+          showLabels: false,
+          labelColor: ()=> 'transparent',
+          backgroundGradientFrom: "white",
+          backgroundGradientTo: "white",
+          backgroundGradientFromOpacity: 1,
+          color: (opacity = 1) => `#00A8A8`,
+          strokeWidth: 2, // optional, default 3
+          barPercentage: 0.5,
+          useShadowColorFromDataset: true, // optional
           decimalPlaces: 2, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          gradient: true,
           style: {
-            borderRadius: 16
+            borderRadius: 100,
           },
           propsForDots: {
-            r: "6",
-            strokeWidth: "2",
+            r: "0",
+            strokeWidth: "0",
             stroke: "#ffa726"
           }
         }}
         bezier
         style={{
           marginVertical: 8,
-          borderRadius: 16
+          marginHorizontal: -60,
+          borderRadius: 100
         }}
       />
-    </View>
+    </ShadowedView>
   );
 }
 
-const styles = StyleSheet.create({
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightContainer: {
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    lineHeight: 24,
-    textAlign: "center",
-  },
-  helpContainer: {
-    marginTop: 15,
-    marginHorizontal: 20,
-    alignItems: "center",
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    textAlign: "center",
-  },
-});
+const ShadowedView = styled.View`
+  padding: 4%;
+  background-color: white;
+  width: 100%;
+  width: 100%;
+  height: 30%;
+  border-radius: 40px;
+  shadow-color: black;
+`;
+
+const Title = styled.Text`
+  font-size: 26px;
+`
+const Value = styled.Text`
+  margin-vertical: 2%;
+  font-size: 40px;
+`
