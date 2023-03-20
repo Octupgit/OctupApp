@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import ChartTest from "../components/EditScreenInfo";
+import ChartTests from "../components/ChartsTests";
 
 export default function TabOneScreen() {
   return (
@@ -8,7 +8,7 @@ export default function TabOneScreen() {
       <Title>Ben</Title>
       <Title>Tab One</Title>
       <Seperator/>
-      <ChartTest path="/screens/TabOneScreen.tsx" />
+      <ChartTests/>
     </Container>
   );
 }

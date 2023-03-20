@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
-import ChartTest from "../components/EditScreenInfo";
+import ChartTest from "../components/ChartsTests";
 
 export default function TabTwoScreen() {
   return (
