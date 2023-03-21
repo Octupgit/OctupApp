@@ -15,7 +15,6 @@ import {useContext} from "react";
 import {useAuth} from "../contexts/authContext";
 
 export default function Navigation({ colorScheme }) {
-  const context = useAuth()
 
   return (
     <NavigationContainer
@@ -53,8 +52,12 @@ const AuthStack = () => {
 };
 
 function RootNavigator() {
+  const context = useAuth()
+  console.log('CONT 1',context)
+
   return (
-    <AuthStack />
+  context?.authData?.token ? <AppStack/> : <AuthStack/>
+  // <AuthStack/>
   );
 }
 

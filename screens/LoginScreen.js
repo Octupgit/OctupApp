@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
+import {useAuth} from "../contexts/authContext";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const context = useAuth()
 
-  const handleLogin = () => {
-    console.log('EMAIL',email)
-    console.log('PASS',password)
+  const handleLogin = async () => {
+    console.log('EMAIL', email)
+    console.log('PASS', password)
+    context.signIn({ email, password})
     // Handle login logic here
   }
 

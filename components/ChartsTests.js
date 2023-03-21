@@ -33,8 +33,8 @@ export default function ChartTests({ title, value, sign }) {
             }
           ]
         }}
-        width={Dimensions.get("window").width + Dimensions.get("window").width * 0.2} // from react-native
-        height={180}
+        width={Dimensions.get("window").width - 19}
+        height={150}
         fromZero={true}
         withVerticalLines={false}
         withHorizontalLines={false}
@@ -65,9 +65,9 @@ export default function ChartTests({ title, value, sign }) {
         }}
         bezier
         style={{
-          marginVertical: 0,
-          marginHorizontal: -60,
-          borderRadius: 100
+          marginVertical: -30,
+          marginHorizontal: -28,
+          borderRadius: 40
         }}
       />
     </ShadowedView>
@@ -79,13 +79,13 @@ export default function ChartTests({ title, value, sign }) {
 const Container = styled.View`
   padding: 4%;
   background-color: white;
+  width: 96%;
+  left: 2%;
   border-radius: 40px;
 `
 
 const ShadowedView = styled.View`
   padding: 2%;
-  background-color: white;
-  width: 100%;
   height: 20%;
   border-radius: 40px;
   border-bottom-width: 40px;
@@ -95,7 +95,9 @@ const ShadowedView = styled.View`
 
 const Title = styled.Text`
   font-size: 26px;
+  z-index: 10;
 `
 const Value = styled.Text`
   font-size: 40px;
+  z-index: 10;
 `
