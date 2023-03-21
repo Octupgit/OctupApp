@@ -26,7 +26,7 @@ export default function Navigation({ colorScheme }) {
 // Read more here: https://reactnavigation.org/docs/modal
 const Stack = createStackNavigator();
 
-function RootNavigator() {
+const AppStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
@@ -37,4 +37,19 @@ function RootNavigator() {
       />
     </Stack.Navigator>
   );
+};
+
+const AuthStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Sign In Screen" component={SignInScreen} />
+    </Stack.Navigator>
+  );
+};
+
+function RootNavigator() {
+  return (
+    <AppStack />
+  );
 }
+
