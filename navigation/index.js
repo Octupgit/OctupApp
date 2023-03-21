@@ -10,8 +10,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
+import {LoginScreen} from "../screens/LoginScreen";
+import {useContext} from "react";
+import {useAuth} from "../contexts/authContext";
 
 export default function Navigation({ colorScheme }) {
+  const context = useAuth()
+
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -42,14 +47,14 @@ const AppStack = () => {
 const AuthStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Sign In Screen" component={SignInScreen} />
+      <Stack.Screen name="Sign In Screen" component={LoginScreen} />
     </Stack.Navigator>
   );
 };
 
 function RootNavigator() {
   return (
-    <AppStack />
+    <AuthStack />
   );
 }
 
