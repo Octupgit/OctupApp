@@ -9,6 +9,7 @@ export const octupTheme = {
     light: "#f8f9fa",
     dark: "#343a40",
     background: "#f5f5f5",
+    cardBackground: "#F8F7FB",
     text: "#504B5A",
     buttonText: "#ffffff",
     transparent: "transparent",

@@ -13,7 +13,7 @@ export default function ChartTests({ title, value, sign }) {
   return (
     <Container>
       <LinearGradient
-        colors={["#D3D3D3", "gray", "#D3D3D3"]}
+        colors={["#f5f5f5", "#D3D3D3", "#f5f5f5"]}
         start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 0.2 }}
       >
@@ -99,7 +99,7 @@ const LinearContainer = styled.View`
   padding: 3%;
   background-color: ${octupTheme.colors.background};
   width: 96%;
-  height: 98%;
+  height: 96%;
   left: 2%;
   border-radius: 40px;
   overflow: hidden;

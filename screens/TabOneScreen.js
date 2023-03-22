@@ -2,15 +2,16 @@ import styled from "styled-components";
 import { LinearGradient } from "expo-linear-gradient";
 
 import ChartTests from "../components/ChartsTests";
+import { octupTheme } from "../theme/octup-theme";
 
 export default function TabOneScreen() {
   return (
     <SafeArea>
       <Title>Hi, Ben</Title>
       <LinearGradient
-        colors={["#D3D3D3", "#D3D3D3", "#D3D3D3"]}
-        start={{ x: 0.5, y: 0.5 }}
-        end={{ x: 0.5, y: 0.5 }}
+        colors={["#f5f5f5", "#D3D3D3", "#f5f5f5"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
       >
         <Container>
           <Top>
@@ -30,21 +31,13 @@ const SafeArea = styled.SafeAreaView``;
 const Container = styled.ScrollView`
   //align-items: center;
   //justify-content: center;
-  //background-color: transparent;
 `;
-
-// const Container = styled.View`
-//   flex: 1;
-//   //align-items: center;
-//   //justify-content: center;
-//   background-color: #F5F5F5;
-// `;
 
 const Title = styled.Text`
   font-size: 20px;
   font-weight: bold;
   line-height: 80px;
-  background-color: #f5f5f5;
+  background-color: ${octupTheme.colors.cardBackground};
 `;
 
 const Top = styled.View`
