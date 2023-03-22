@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
-import styled from 'styled-components/native';
-import {useAuth} from "../contexts/authContext";
+import React, { useState } from "react";
+import styled from "styled-components/native";
+import { useAuth } from "../contexts/authContext";
+import { OctupLogo } from "../assets/svgs/octupLogo";
 
 export const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const context = useAuth()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const context = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
-    console.log('EMAIL', email)
-    console.log('PASS', password)
-    context.signIn({ email, password})
+    console.log("EMAIL", email);
+    console.log("PASS", password);
+    context.signIn({ email, password });
     // Handle login logic here
-  }
+  };
 
   return (
     <Container>
+      <OctupLogo />
       <Title>Login</Title>
-      <Input
-        placeholder="Email"
-        onChangeText={setEmail}
-        value={email}
-      />
+      <Input placeholder="Email" onChangeText={setEmail} value={email} />
       <Input
         placeholder="Password"
-        secureTextEntry={true}
+        secureTextEntry={!showPassword}
         onChangeText={setPassword}
         value={password}
       />
@@ -33,7 +32,7 @@ export const LoginScreen = () => {
       </Button>
     </Container>
   );
-}
+};
 
 const Container = styled.View`
   flex: 1;
