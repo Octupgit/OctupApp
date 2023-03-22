@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/authContext";
 import { OctupLogo } from "../assets/svgs/octupLogo";
 import { TextInput } from "@react-native-material/core";
 import { EyeLogo } from "../assets/svgs/eye";
-import { ClosedEyeLogo } from "../assets/svgs/closed_eye";
+import { ClosedEyeLogo } from "../assets/svgs/closed-eye";
 import { LinearGradient } from "expo-linear-gradient";
 import { getEmailColor, isValidEmail } from "../utils/string-utils";
 import { octupTheme } from "../theme/octup-theme";
