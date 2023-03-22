@@ -13,7 +13,7 @@ export default function ChartTests({ title, value, sign }) {
   return (
     <Container>
       <LinearGradient
-        colors={["#F5F5F5", "gray", "#D3D3D3"]}
+        colors={["#D3D3D3", "gray", "#D3D3D3"]}
         start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 0.2 }}
       >
@@ -79,7 +79,7 @@ export default function ChartTests({ title, value, sign }) {
               }}
               bezier
               style={{
-                marginVertical: -30,
+                marginVertical: -35,
                 marginHorizontal: -28,
                 borderRadius: 40,
               }}
