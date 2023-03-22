@@ -3,43 +3,68 @@ import styled from "styled-components/native";
 import { useAuth } from "../contexts/authContext";
 import { OctupLogo } from "../assets/svgs/octupLogo";
 import { TextInput } from "@react-native-material/core";
-import {EyeLogo} from "../assets/svgs/eye";
+import { EyeLogo } from "../assets/svgs/eye";
+import { ClosedEyeLogo } from "../assets/svgs/closed_eye";
+import { LinearGradient } from "expo-linear-gradient";
+import { getEmailColor, isValidEmail } from "../utils/string-utils";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const context = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [showEmailColor, setShowEmailColor] = useState(false);
 
   const handleLogin = async () => {
-    console.log("EMAIL", email);
-    console.log("PASS", password);
     context.signIn({ email, password });
-    // Handle login logic here
   };
 
   return (
     <Container>
-      <OctupLogo />
-      <EyeLogo />
-      <Title>Login</Title>
-      {/*<Input placeholder="Email" onChangeText={setEmail} value={email} />*/}
-      <TextInput variant="outlined" label="email" style={{ margin: 16, width: 400 }} trailing={
-        ()=>{
-          if (showPassword) {
-        return (<EyeLogo/>)
-      }
-        }
-      } />
-      <Input
-        placeholder="Password"
-        secureTextEntry={!showPassword}
-        onChangeText={setPassword}
-        value={password}
-      />
-      <Button onPress={handleLogin}>
-        <ButtonText>'Login'</ButtonText>
-      </Button>
+      <LogoContainer>
+        <OctupLogo />
+      </LogoContainer>
+      <LoginView>
+        <Title>Log In to your account</Title>
+        <TextInput
+          variant="outlined"
+          label="email"
+          color={getEmailColor(email, showEmailColor)}
+          onBlur={() => {
+            console.log("LEAVE");
+            setShowEmailColor(true);
+          }}
+          style={{ margin: 16, width: 400 }}
+          // inputStyle={{ color: getEmailColor(email, showEmailColor) }}
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          variant="outlined"
+          label="password"
+          secureTextEntry={!showPassword}
+          style={{ margin: 16, width: 400 }}
+          value={password}
+          color={password.length > 0 ? "green" : "red"}
+          onChangeText={setPassword}
+          trailing={() => {
+            if (!showPassword) {
+              return <EyeLogo onPress={() => setShowPassword(true)} />;
+            } else {
+              return <ClosedEyeLogo onPress={() => setShowPassword(false)} />;
+            }
+          }}
+        />
+        <Button onPress={handleLogin}>
+          <ButtonGradient
+            colors={["#007F82", "#00A8A8"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+          >
+            <ButtonText>Log In</ButtonText>
+          </ButtonGradient>
+        </Button>
+      </LoginView>
     </Container>
   );
 };
@@ -47,31 +72,29 @@ export const LoginScreen = () => {
 const Container = styled.View`
   flex: 1;
   align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 `;
 
 const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 30px;
-`;
-
-const Input = styled.TextInput`
-  width: 80%;
-  height: 50px;
-  padding: 10px;
-  border-width: 1px;
-  border-color: #cccccc;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  text-align: center;
 `;
 
 const Button = styled.TouchableOpacity`
-  background-color: #0080ff;
-  width: 80%;
+  width: 83%;
   height: 50px;
-  border-radius: 5px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+const ButtonGradient = styled(LinearGradient)`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
   align-items: center;
   justify-content: center;
 `;
@@ -79,4 +102,18 @@ const Button = styled.TouchableOpacity`
 const ButtonText = styled.Text`
   color: #ffffff;
   font-size: 18px;
+`;
+
+const LoginView = styled.View`
+  padding-top: 10%;
+  flex: 1;
+  width: 100%;
+  background-color: white;
+  border-top-right-radius: 40px;
+  align-items: center;
+`;
+
+const LogoContainer = styled.View`
+  height: 10%;
+  justify-content: center;
 `;
