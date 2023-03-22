@@ -9,6 +9,8 @@ import Colors from "../constants/Colors";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import { MetricsTabIcon } from "../assets/svgs/metrics-tab";
+import { InsightsTabIcon } from "../assets/svgs/insights-tab";
+import { octupTheme } from "../theme/octup-theme";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -18,24 +20,22 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Metrics"
-      screenOptions={{ tabBarActiveTintColor: Colors[colorScheme].tint }}
+      screenOptions={{ tabBarActiveTintColor: octupTheme.colors.primary }}
     >
       <BottomTab.Screen
         name="Metrics"
         component={TabOneNavigator}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => <MetricsTabIcon color={"black"} />,
+          tabBarIcon: ({ color }) => <MetricsTabIcon color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Insights"
         component={TabTwoNavigator}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <MetricsTabIcon name="ios-code" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <InsightsTabIcon color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -58,7 +58,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: "Tab One Title" }}
+        options={{ headerTitle: "Tab One Title", headerShown: false }}
       />
     </TabOneStack.Navigator>
   );
@@ -72,7 +72,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: "Tab Two Title" }}
+        options={{ headerTitle: "Tab Two Title", headerShown: false }}
       />
     </TabTwoStack.Navigator>
   );

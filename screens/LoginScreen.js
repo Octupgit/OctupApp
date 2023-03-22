@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import { useAuth } from "../contexts/authContext";
-import { OctupLogo } from "../assets/svgs/octupLogo";
+import { OctupLogoWithText } from "../assets/svgs/octup-logo-with-text";
 import { TextInput } from "@react-native-material/core";
 import { EyeLogo } from "../assets/svgs/eye";
 import { ClosedEyeLogo } from "../assets/svgs/closed-eye";
@@ -23,7 +23,7 @@ export const LoginScreen = () => {
   return (
     <Container>
       <LogoContainer>
-        <OctupLogo />
+        <OctupLogoWithText />
       </LogoContainer>
       <LoginView>
         <Title>Log In to your account</Title>

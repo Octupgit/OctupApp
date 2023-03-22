@@ -1,8 +1,14 @@
 import Svg, { Path } from "react-native-svg";
 
-export const MetricsTabIcon = ({ color }) => {
+export const MetricsTabIcon = ({ onPress, color }) => {
   return (
-    <Svg width={24} height={24} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <Svg
+      width={24}
+      height={24}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onPress={() => onPress && onPress()}
+    >
       <Path
         d="M13.6 8.718v10.038a.656.656 0 0 0 .285.54l.88.595a.633.633 0 0 0 .834-.11.652.652 0 0 0 .141-.273l1.06-4.299"
         stroke={color}
