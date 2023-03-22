@@ -43,6 +43,7 @@ export default function TabOneScreen() {
                 value={"47"}
                 sign={"$"}
               />
+              <View />
             </Top>
           </Container>
         </SafeArea>
@@ -68,6 +69,6 @@ const Title = styled.Text`
 `;
 
 const Top = styled.View`
-  height: 58%;
+  height: 60%;
   width: 100%;
 `;
