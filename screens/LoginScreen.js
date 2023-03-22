@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components/native";
 import { useAuth } from "../contexts/authContext";
 import { OctupLogo } from "../assets/svgs/octupLogo";
+import { TextInput } from "@react-native-material/core";
+import {EyeLogo} from "../assets/svgs/eye";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -19,8 +21,16 @@ export const LoginScreen = () => {
   return (
     <Container>
       <OctupLogo />
+      <EyeLogo />
       <Title>Login</Title>
-      <Input placeholder="Email" onChangeText={setEmail} value={email} />
+      {/*<Input placeholder="Email" onChangeText={setEmail} value={email} />*/}
+      <TextInput variant="outlined" label="email" style={{ margin: 16, width: 400 }} trailing={
+        ()=>{
+          if (showPassword) {
+        return (<EyeLogo/>)
+      }
+        }
+      } />
       <Input
         placeholder="Password"
         secureTextEntry={!showPassword}
