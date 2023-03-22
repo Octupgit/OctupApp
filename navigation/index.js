@@ -44,7 +44,7 @@ const AppStack = () => {
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Sign In Screen" component={LoginScreen} />
     </Stack.Navigator>
   );

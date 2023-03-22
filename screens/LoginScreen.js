@@ -115,5 +115,6 @@ const LoginView = styled.View`
 
 const LogoContainer = styled.View`
   height: 15%;
+  margin-top: 4%;
   justify-content: center;
 `;
