@@ -1,3 +1,5 @@
+import { octupTheme } from "../theme/octup-theme";
+
 export function isValidEmail(email: string): boolean {
   // Regular expression to match email format
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -8,9 +10,9 @@ export function isValidEmail(email: string): boolean {
 export function getEmailColor(email: string, showColor: boolean): string {
   if (showColor) {
     if (isValidEmail(email)) {
-      return "green";
+      return `${octupTheme.colors.success}`;
     }
-    return "red";
+    return `${octupTheme.colors.warning}`;
   }
-  return "black";
+  return `${octupTheme.colors.text}`;
 }

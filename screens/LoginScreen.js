@@ -7,6 +7,7 @@ import { EyeLogo } from "../assets/svgs/eye";
 import { ClosedEyeLogo } from "../assets/svgs/closed_eye";
 import { LinearGradient } from "expo-linear-gradient";
 import { getEmailColor, isValidEmail } from "../utils/string-utils";
+import { octupTheme } from "../theme/octup-theme";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,6 @@ export const LoginScreen = () => {
           label="email"
           color={getEmailColor(email, showEmailColor)}
           onBlur={() => {
-            console.log("LEAVE");
             setShowEmailColor(true);
           }}
           style={{ margin: 16, width: 400 }}
@@ -72,7 +72,7 @@ export const LoginScreen = () => {
 const Container = styled.View`
   flex: 1;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: ${octupTheme.colors.background};
 `;
 
 const Title = styled.Text`
@@ -100,7 +100,7 @@ const ButtonGradient = styled(LinearGradient)`
 `;
 
 const ButtonText = styled.Text`
-  color: #ffffff;
+  color: ${octupTheme.colors.buttonText};
   font-size: 18px;
 `;
 
@@ -114,6 +114,6 @@ const LoginView = styled.View`
 `;
 
 const LogoContainer = styled.View`
-  height: 10%;
+  height: 15%;
   justify-content: center;
 `;
