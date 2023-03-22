@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import {useAuth} from "../contexts/authContext";
+import {OctupLogo} from "../assets/svgs/octupLogo";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false)
   const context = useAuth()
 
   const handleLogin = async () => {
@@ -16,6 +18,7 @@ export const LoginScreen = () => {
 
   return (
     <Container>
+      <OctupLogo />
       <Title>Login</Title>
       <Input
         placeholder="Email"
@@ -24,12 +27,12 @@ export const LoginScreen = () => {
       />
       <Input
         placeholder="Password"
-        secureTextEntry={true}
+        secureTextEntry={!showPassword}
         onChangeText={setPassword}
         value={password}
       />
       <Button onPress={handleLogin}>
-        <ButtonText>'Login'</ButtonText>
+        <ButtonText>Login</ButtonText>
       </Button>
     </Container>
   );
@@ -71,3 +74,5 @@ const ButtonText = styled.Text`
   color: #ffffff;
   font-size: 18px;
 `;
+
+const LogoImage = styled.Image

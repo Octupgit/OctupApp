@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { LinearGradient } from "expo-linear-gradient";
 
 import ChartTests from "../components/ChartsTests";
 
@@ -11,13 +10,7 @@ export default function TabOneScreen() {
       <Top>
       <ChartTests title={'roas'} value={0.6} sign={''}/>
       <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
-        <LinearGradient
-          colors={['red', 'yellow', 'green' ]}
-        />
         <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
-        <LinearGradient
-          colors={['red', 'yellow', 'green' ]}
-        />
         <ChartTests title={'Average Order Value'} value={'47'} sign={'$'}/>
       </Top>
     </Container>
