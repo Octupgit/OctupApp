@@ -3,13 +3,6 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import ChartTests from "../components/ChartsTests";
 import { octupTheme } from "../theme/octup-theme";
-import {
-  AppBar,
-  Backdrop,
-  BackdropSubheader,
-  Icon,
-  IconButton,
-} from "@react-native-material/core";
 import { View } from "react-native";
 
 export default function TabOneScreen() {
