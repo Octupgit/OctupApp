@@ -58,9 +58,9 @@ export default function ChartTests({ title, value, sign }) {
               chartConfig={{
                 showLabels: false,
                 labelColor: () => "black",
-                backgroundGradientFrom: `${octupTheme.colors.background}`,
+                backgroundGradientFrom: `${octupTheme.colors.cardBackground}`,
                 propsForLabels: { display: "none" },
-                backgroundGradientTo: `${octupTheme.colors.background}`,
+                backgroundGradientTo: `${octupTheme.colors.cardBackground}`,
                 backgroundGradientFromOpacity: 1,
                 color: () => `${octupTheme.colors.primary}`,
                 strokeWidth: 2, // optional, default 3
@@ -97,7 +97,7 @@ const Container = styled.View`
 
 const LinearContainer = styled.View`
   padding: 3%;
-  background-color: ${octupTheme.colors.background};
+  background-color: ${octupTheme.colors.cardBackground};
   width: 96%;
   height: 96%;
   left: 2%;
