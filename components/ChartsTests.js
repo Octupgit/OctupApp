@@ -47,8 +47,8 @@ export default function ChartTests({ title, value, sign }) {
                   },
                 ],
               }}
-              width={Dimensions.get("window").width}
-              height={150}
+              width={1.18 * Dimensions.get("window").width}
+              height={140}
               fromZero={true}
               withVerticalLines={false}
               withHorizontalLines={false}
@@ -80,7 +80,7 @@ export default function ChartTests({ title, value, sign }) {
               bezier
               style={{
                 marginVertical: -35,
-                marginHorizontal: -28,
+                marginHorizontal: -60,
                 borderRadius: 40,
               }}
             />

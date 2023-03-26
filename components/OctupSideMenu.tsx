@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Button,
   DrawerLayoutAndroid,
@@ -10,12 +10,10 @@ import { octupTheme } from "../theme/octup-theme";
 import styled from "styled-components";
 
 export const OctupSideMenu = (props) => {
-  const drawer = useRef<DrawerLayoutAndroid>(null);
+  const drawer = useRef<DrawerLayoutAndroid>(props.openMenu);
   const [drawerPosition, setDrawerPosition] = useState<"left" | "right">(
-    "left"
+    "right"
   );
-
-  console.log("props", props);
 
   const changeDrawerPosition = () => {
     if (drawerPosition === "left") {
@@ -24,6 +22,12 @@ export const OctupSideMenu = (props) => {
       setDrawerPosition("left");
     }
   };
+
+  useEffect(() => {
+    props.openMenu
+      ? drawer?.current?.openDrawer()
+      : drawer?.current?.closeDrawer();
+  }, [props.openMenu]);
 
   const navigationView = () => (
     <SideWays>
@@ -42,10 +46,6 @@ export const OctupSideMenu = (props) => {
       drawerPosition={drawerPosition}
       renderNavigationView={navigationView}
     >
-      <Button
-        title="Open drawer"
-        onPress={() => drawer.current?.openDrawer()}
-      />
       {props.children}
     </DrawerLayoutAndroid>
   );

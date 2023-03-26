@@ -9,14 +9,14 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
 import { LoginScreen } from "../screens/LoginScreen";
-import { useRef, useState } from "react";
 import { useAuth } from "../contexts/authContext";
 import styled from "styled-components";
-import { Button, DrawerLayoutAndroid, View } from "react-native";
 import { OctupSideMenu } from "../components/OctupSideMenu";
 import { AppBar } from "@react-native-material/core";
 import { octupTheme } from "../theme/octup-theme";
 import { OctupLogo } from "../assets/svgs/octup-logo";
+import { OpenMenuIcon } from "../assets/svgs/open-menu-icon";
+import { useState } from "react";
 
 export default function Navigation({ colorScheme }) {
   return (
@@ -32,20 +32,28 @@ export default function Navigation({ colorScheme }) {
 const Stack = createStackNavigator();
 
 const AppStack = () => {
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <>
-      <AppBar
-        leading={() => {
-          return (
-            <LogoContainer>
-              <OctupLogo />
-            </LogoContainer>
-          );
-        }}
-        style={{ height: "10%" }}
-        color={octupTheme.colors.text}
-      />
-      <OctupSideMenu>
+      <OctupSideMenu openMenu={openMenu}>
+        <AppBar
+          leading={() => {
+            return (
+              <LogoContainer>
+                <OctupLogo />
+              </LogoContainer>
+            );
+          }}
+          trailing={() => {
+            return (
+              <LogoContainer>
+                <OpenMenuIcon onPress={() => setOpenMenu(!openMenu)} />
+              </LogoContainer>
+            );
+          }}
+          style={{ height: "10%" }}
+          color={octupTheme.colors.text}
+        />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Root" component={BottomTabNavigator} />
           <Stack.Screen
