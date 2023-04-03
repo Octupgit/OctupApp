@@ -1,7 +1,7 @@
 export const octupTheme = {
   colors: {
     primary: "#00A8A8",
-    secondary: "#6c757d",
+    secondary: "#7A00F3",
     success: "#078344",
     danger: "#dc3545",
     warning: "#DB2059",

@@ -3,11 +3,9 @@ import { Dimensions, StyleSheet, TouchableOpacity } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { LinearGradient } from "expo-linear-gradient";
 
-import Colors from "../constants/Colors";
-import { MonoText } from "./StyledText";
-import { Text, View } from "./Themed";
 import styled from "styled-components";
 import { octupTheme } from "../theme/octup-theme";
+import { CustomLineChart } from "./GradientedLineChart";
 
 export default function ChartTests({ title, value, sign }) {
   return (
@@ -24,7 +22,9 @@ export default function ChartTests({ title, value, sign }) {
             {value}
           </Value>
           <ShadowedView>
-            <LineChart
+            <CustomLineChart
+              color2={octupTheme.colors.primary}
+              color1={octupTheme.colors.secondary}
               data={{
                 labels: [
                   "January",
@@ -58,18 +58,18 @@ export default function ChartTests({ title, value, sign }) {
               chartConfig={{
                 showLabels: false,
                 labelColor: () => "black",
-                backgroundGradientFrom: `${octupTheme.colors.cardBackground}`,
                 propsForLabels: { display: "none" },
+                backgroundGradientFrom: `${octupTheme.colors.cardBackground}`,
                 backgroundGradientTo: `${octupTheme.colors.cardBackground}`,
                 backgroundGradientFromOpacity: 1,
-                color: () => `${octupTheme.colors.primary}`,
+                color: () => `url(#grad)`,
                 strokeWidth: 2, // optional, default 3
                 barPercentage: 0.5,
                 useShadowColorFromDataset: true, // optional
                 decimalPlaces: 2, // optional, defaults to 2dp
                 gradient: true,
                 style: {
-                  borderRadius: 100,
+                  borderRadius: 0,
                 },
                 propsForDots: {
                   r: "0",
@@ -81,7 +81,6 @@ export default function ChartTests({ title, value, sign }) {
               style={{
                 marginVertical: -35,
                 marginHorizontal: -60,
-                borderRadius: 40,
               }}
             />
           </ShadowedView>
@@ -101,14 +100,13 @@ const LinearContainer = styled.View`
   width: 96%;
   height: 96%;
   left: 2%;
-  border-radius: 40px;
+  border-radius: 20px;
   overflow: hidden;
 `;
 
 const ShadowedView = styled.View`
   padding: 2%;
   height: 20%;
-  border-radius: 40px;
   border-bottom-width: 40px;
   border-bottom-color: ${octupTheme.colors.background};
   shadow-opacity: 0.1;
